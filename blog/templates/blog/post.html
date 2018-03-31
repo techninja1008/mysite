@@ -1,0 +1,19 @@
+{% load gravatar %}
+{% load markdownify %}
+{% load bleach_tags %}
+<div class="card" style="margin-top 8px;">
+    <div class="card-header">
+        <a href="{% url 'accounts:view' pk=post.author.pk %}">
+        <img src="{% gravatar_url post.author.email 30 %}" class="rounded-circle" /> {{ post.author }}</a>
+    </div>
+    <div class="card-body">
+        <h{% if large %}1{% else %}5{% endif %} class="card-tilte"><a href="{% url 'blog:post_detail' pk=post.pk %}">{{ post.title }}</a></h{% if large %}1{% else %}5{% endif %}>
+        <h{% if large %}2{% else %}6{% endif %} class="card-subtitle mb-2 text-muted">{{ post.published_date }}</h{% if large %}2{% else %}6{% endif %}>
+        <p class="card-text">{{ post.body | markdown | safe | bleach }}</p>
+        {% if request.user.is_authenticated %} {% if request.user.pk == post.author.pk %}
+        <div class="text-right">
+            <a href="{% url 'blog:post_edit' pk=post.pk %}" class="card-link">edit</a>
+        </div>
+        {% endif %}{% endif %}
+    </div>
+</div> 

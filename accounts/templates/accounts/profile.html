@@ -1,0 +1,35 @@
+{% extends 'home/base.html' %}
+
+{% block content %}
+<ul class="nav nav-tabs">
+    <li class="nav-item">
+        <a class="nav-link{% if page == 'info' %} active{% endif %}" href="{% if page != 'info' %}{% url 'accounts:view' user.pk %}{% else %}#{% endif %}">Info</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link{% if page == 'blog' %} active{% endif %}" href="{% if page != 'blog' %}{% url 'accounts:view_blog' user.pk %}{% else %}#{% endif %}">Blog</a>
+    </li>
+</ul>
+
+<div class="container-fluid" style="margin-top: 8px;">
+{% if page == 'info' %}
+{% load gravatar %}
+<table>
+<tr>
+<td>
+<img src="{% gravatar_url user.email 150 %}" class="rounded-circle" /> </td>
+<td>
+{% if user.username %}Username: {{ user.username }}<br>{% endif %}
+{% if user.first_name %}First Name: {{ user.first_name }}<br>{% endif %}
+{% if user.last_name %}Last Name: {{ user.last_name }}<br>{% endif %}
+{% if user.last_login %}Last Seen: {{ user.last_login }}{% endif %}
+</td>
+</tr>
+</table>
+{% else %}
+
+{% for post in posts %}
+{% include 'blog/post.html' %}
+{% endfor %}
+{% endif %}
+</div>
+{% endblock %}

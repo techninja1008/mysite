@@ -1,0 +1,6 @@
+{% extends 'home/base.html' %}
+
+{% block content %}
+<h1>Internal Server Error. 500</h1>
+<p>This error is caused when something goes wrong on our server. A member of out team has been notified of the issue. In the meantime, do you want to go <a href={% url 'home:index' 'home' %}>back</a>?</p>
+{% endblock %}

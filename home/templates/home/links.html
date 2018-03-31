@@ -1,0 +1,18 @@
+{% extends 'home/base.html' %}
+{% block content %}
+<h1>Where to find me</h1>
+{% if links %}
+<table class="table table-hover">
+    <thead>
+    <tr><th>Webite</th><th>Link</th></tr>
+    </thead>
+    <tbody>
+{% for link in links %}
+    <tr><td>{{ link.link_website }}</td><td><a href="{{ link.link_href }}">{{ link.link_text }}</a></td>
+    </tbody>
+{% endfor %}
+</table>
+{% else %}
+<p>Sorry. No links here yet :(</p>
+{% endif %}
+{% endblock %}

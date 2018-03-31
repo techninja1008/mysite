@@ -1,0 +1,12 @@
+{% extends 'home/base.html' %}
+
+{% block content %}
+<h1> showing results for query '{{ query }}'</h1>
+{% if results %}
+{% for post in results %}
+{% include 'blog/post.html' %}
+{% endfor %}
+{% else %}
+<p>Sorry. No results</p>
+{% endif %}
+{% endblock %}

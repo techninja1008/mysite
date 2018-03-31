@@ -1,0 +1,7 @@
+{% extends 'home/base.html' %}
+{% load gravatar %}
+
+{% block content %}
+
+{% with large=True %}{% include 'blog/post.html' %}{% endwith %}
+{% endblock %}

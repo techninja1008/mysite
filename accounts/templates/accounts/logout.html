@@ -1,0 +1,8 @@
+{% extends 'home/base.html' %}
+
+{% block content %}
+<div class="container-fluid">
+    <h1>Bye</h1>
+    <p>You have just logged out. If this was a mistake click <a href="{% url 'accounts:login' %}">here</a> to log back in.</p>
+</div>
+{% endblock %}
