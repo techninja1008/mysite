@@ -35,7 +35,16 @@ GRANT ALL PRIVILEGES ON DATABASE mysite TO mysiteadmin;
 
 now close psql by typing `\q` and log out of the postgres account by typing `exit`
 
-### Cloning the repository
+### Setup django
 now you need to clone my git reposiotry. This contains the django framework and all of the templates etc.
 ```bash
 git clone https://www.github.com/lukespademan/mysite.git
+cd mysite
+```
+
+next is creating the virtual environemnt and installing the python packages
+```bash
+python3 -m venv venv
+```
+if you are on a development machine run `pip install -r dev_requirements.txt` but if you are on a production machine run `pip instal -r prod_requirements.txt`
+
