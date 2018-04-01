@@ -42,9 +42,21 @@ git clone https://www.github.com/lukespademan/mysite.git
 cd mysite
 ```
 
-next is creating the virtual environemnt and installing the python packages
+next is creating the virtual environemnt, activiating it and installing the python packages
 ```bash
 python3 -m venv venv
+source venv/bin/activate
 ```
 if you are on a development machine run `pip install -r dev_requirements.txt` but if you are on a production machine run `pip instal -r prod_requirements.txt`
 
+you now need to create a database supersuser (which you will use to log into the admin interface) and run collect static (which puts all of the static files i.e. css, js, img in one place so that you webserver i.e. nginx and gunicorn can find them
+
+```bash
+./manage.py createsuperuser
+./manage.py collectstatic
+```
+
+### running the server
+if you are on a dev machine, all you need to do the run the server is type `python manage.py runserver` and then navigate to 127.0.0.1:8000 in your webbrowser to access it. but if you are on a production server you need to carry on following this tutorial.
+
+type `deactivate` to exit the virtual environment.
