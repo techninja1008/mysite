@@ -21,6 +21,7 @@ def my_account(request):
 
 class UserInfoView(CustomView, generic.DetailView):
     model = UserProfile
+    context_object_name = 'userprof'
     template_name = 'accounts/profile.html'
     
     def get_more_context(self):
@@ -36,6 +37,6 @@ class UserBlogInfoView(CustomView, generic.ListView):
         qs = Post.objects.all().filter(author_id=self.kwargs['pk'])
         return qs
     def get_more_context(self):
-        return {'title': "profile", 'page': "blog", 'user': UserProfile.objects.filter(pk=self.kwargs['pk']).first()}
+        return {'title': "profile", 'page': "blog", 'userprof': UserProfile.objects.filter(pk=self.kwargs['pk']).first()}
 
 

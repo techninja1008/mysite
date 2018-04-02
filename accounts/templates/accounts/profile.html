@@ -3,10 +3,10 @@
 {% block content %}
 <ul class="nav nav-tabs">
     <li class="nav-item">
-        <a class="nav-link{% if page == 'info' %} active{% endif %}" href="{% if page != 'info' %}{% url 'accounts:view' user.pk %}{% else %}#{% endif %}">Info</a>
+        <a class="nav-link{% if page == 'info' %} active{% endif %}" href="{% if page != 'info' %}{% url 'accounts:view' userprof.pk %}{% else %}#{% endif %}">Info</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link{% if page == 'blog' %} active{% endif %}" href="{% if page != 'blog' %}{% url 'accounts:view_blog' user.pk %}{% else %}#{% endif %}">Blog</a>
+        <a class="nav-link{% if page == 'blog' %} active{% endif %}" href="{% if page != 'blog' %}{% url 'accounts:view_blog' userprof.pk %}{% else %}#{% endif %}">Blog</a>
     </li>
 </ul>
 
@@ -16,12 +16,12 @@
 <table>
 <tr>
 <td>
-<img src="{% gravatar_url user.email 150 %}" class="rounded-circle" /> </td>
+<img src="{% gravatar_url userprof.email 150 %}" class="rounded-circle" /> </td>
 <td>
-{% if user.username %}Username: {{ user.username }}<br>{% endif %}
-{% if user.first_name %}First Name: {{ user.first_name }}<br>{% endif %}
-{% if user.last_name %}Last Name: {{ user.last_name }}<br>{% endif %}
-{% if user.last_login %}Last Seen: {{ user.last_login }}{% endif %}
+{% if userprof.username %}Username: {{ userprof.username }}<br>{% endif %}
+{% if userprof.first_name %}First Name: {{ userprof.first_name }}<br>{% endif %}
+{% if userprof.last_name %}Last Name: {{ userprof.last_name }}<br>{% endif %}
+{% if userprof.last_login %}Last Seen: {{ userprof.last_login }}{% endif %}
 </td>
 </tr>
 </table>
@@ -30,6 +30,7 @@
 {% for post in posts %}
 {% include 'blog/post.html' %}
 {% endfor %}
+
 {% endif %}
 </div>
 {% endblock %}
