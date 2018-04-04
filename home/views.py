@@ -3,8 +3,9 @@ from django.shortcuts import render, get_object_or_404
 from django.urls import reverse, reverse_lazy
 from django.views import generic
 from django.utils import timezone
+from blog.models import Post
 
-from .models import Content, Page, Link
+from .models import Details
 
 class CustomView():
     def get_context_data(self, **kwargs):
@@ -12,9 +13,9 @@ class CustomView():
         context.update(self.get_more_context())
         context.update({
             'nav_links': [
-                {'text': "Home", 'href': reverse('home:index', args=['home'])},
-                {'text': "About", 'href': reverse('home:index', args=['about'])},
-                {'text': "Links", 'href': reverse('home:links')},
+                {'text': "Home", 'href': reverse('home:index')},
+                {'text': "About", 'href': reverse('about:about')},
+                {'text': "Links", 'href': reverse('about:links')},
                 {'text': "Blog", 'href': reverse('blog:post_list')}
             ]})
 
@@ -22,21 +23,20 @@ class CustomView():
 
 class IndexView(CustomView, generic.ListView):
     template_name = 'home/index.html'
-    context_object_name = 'content'
+    context_object_name = 'posts'
 
     def get_more_context(self):
-        return {'title': self.kwargs['page']}
+        return {
+            'title': 'Home',
+            'welcome_msg': Details.objects.all().first().welcome_msg 
+            }
 
     def get_queryset(self):
-        page = get_object_or_404(Page, page=self.kwargs['page']).id
-        return Content.objects.filter(page=page)
+        posts = [
+            Post.objects.order_by('-published_date')[:3],
+            Post.objects.order_by('-published_date')[3:6],
+            Post.objects.order_by('-published_date')[6:9],
+            ]
+        return posts
     
-
-class LinksView(CustomView, generic.ListView):
-    template_name = 'home/links.html'
-    context_object_name = 'links'
-    model = Link
-
-    def get_more_context(self):
-        return {'title': "links"}
 

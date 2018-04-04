@@ -56,8 +56,10 @@ else:
 INSTALLED_APPS = [
     'accounts',
     'home',
+    'about',
     'blog',
     'search',
+    'birthday',
     'django_gravatar',
     'django_bleach',
     'django.contrib.sitemaps',

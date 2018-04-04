@@ -18,18 +18,13 @@ from django.urls import path, include
 from django.contrib.sitemaps.views import sitemap
 from django.contrib.sitemaps import GenericSitemap
 from blog.models import Post
-from home.models import Page
 
 post_dict = {
         'queryset': Post.objects.all(),
             'date_field': 'published_date'
 }
-page_dict = {
-        'queryset': Page.objects.all()    
-}
 sitemaps = {
         'blog': GenericSitemap(post_dict, priority=0.6),
-            'home': GenericSitemap(page_dict, priority=0.7),   
 }
 
 urlpatterns = [
@@ -38,5 +33,7 @@ urlpatterns = [
     path('accounts/', include('accounts.urls')),
     path('search/', include('search.urls')),
     path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
+    path('about/', include('about.urls')),
+    path('danny/', include('birthday.urls')),
     path('', include('home.urls')),
 ]

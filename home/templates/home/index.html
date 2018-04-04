@@ -1,8 +1,19 @@
 {% extends 'home/base.html' %}
 
 {% block content %}
-{% for c in content %}
-<h1>{{ c.heading_text }}</h1>
-<p>{{ c.body_text }}</p>
+<h1>Welcome</h1>
+<p>{{ welcome_msg }}</p>
+
+
+<div class="container-fluid">
+{% for row in posts %}
+    <div class="row">
+    {% for post in row %}
+        <div class="col-sm-6">
+            {% include 'blog/post_preview.html' %}
+        </div>
+    {% endfor %}
+    </div>
 {% endfor %}
+</div>
 {% endblock %}
