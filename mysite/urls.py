@@ -18,13 +18,18 @@ from django.urls import path, include
 from django.contrib.sitemaps.views import sitemap
 from django.contrib.sitemaps import GenericSitemap
 from blog.models import Post
-
+from sites.models import Site
+from time import time
 post_dict = {
         'queryset': Post.objects.all(),
             'date_field': 'published_date'
 }
+sites_dict = {
+    'queryset': Site.objects.all(),
+}
 sitemaps = {
         'blog': GenericSitemap(post_dict, priority=0.6),
+        'home': GenericSitemap(sites_dict, priority=0.7),
 }
 
 urlpatterns = [

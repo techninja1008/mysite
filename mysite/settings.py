@@ -60,6 +60,7 @@ INSTALLED_APPS = [
     'blog',
     'search',
     'birthday',
+    'sites',
     'django_gravatar',
     'django_bleach',
     'django.contrib.sitemaps',
