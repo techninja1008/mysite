@@ -17,7 +17,9 @@ class CustomView():
                 {'text': "About", 'href': reverse('about:about')},
                 {'text': "Links", 'href': reverse('about:links')},
                 {'text': "Blog", 'href': reverse('blog:post_list')}
-            ]})
+            ],
+            'can_post': self.request.user.has_perm('blog.add_post')
+            })
 
         return context
 

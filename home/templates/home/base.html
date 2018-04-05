@@ -19,16 +19,24 @@
         <ul class="navbar-nav mr-auto">
             {% for link in nav_links %}            
             <li class="nav-item{% if link.href == request.path %} active {% endif %}">
-                <a class="nav-link" href="{{ link.href }}">{{ link.text }}{% if link.href == request.path %}  <span class="sr-only">(current)</span>{% endif %}</a>
+                <a class="nav-link" href="{{ link.href }}">{{ link.text }}{% if link.href == request.path %}{% endif %}</a>
             </li>
             {% endfor %}
         
         </ul>
+        <!--search bar-->
         <form class="form-inline my-2 my-lg-0" method="get" action="/search/">
             <input class="form-control mr-sm-2" type="search" name="q" placeholder="Search Blog" aria-label="Search">
-            <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
+            <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button> 
         </form>
         <ul class="navbar-nav justify-content-end">
+            {% if can_post %}
+
+                <form class="form-inline my-2 my-lg-0" method="get" action="/search/">
+                    <a class="btn btn-outline-primary my-2 my-sm-0" style="margin-left:4px;" href="{% url 'blog:post_new' %}">New Post</a>
+                </form>
+            {% endif %}
+
             {% if request.user.username %}
             <li class="nav-item">
                 <a class="nav-link" href="{% url 'accounts:logout' %}">Logout</a>

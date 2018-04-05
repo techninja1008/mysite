@@ -139,6 +139,7 @@ AUTH_PASSWORD_VALIDATORS = [
 AUTH_USER_MODEL = 'accounts.UserProfile'
 
 
+
 # BLEACH
 # Which HTML tags are allowed
 BLEACH_ALLOWED_TAGS = ['p', 'b', 'i', 'u', 'em', 'strong', 'a', 'blockquote', 'ul', 'li', 'footer']
