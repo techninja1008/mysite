@@ -1,10 +1,13 @@
 {% extends 'home/base.html' %}
+{% load markdownify %}
+{% load bleach_tags %}
 
 {% block content %}
 <h1>Welcome</h1>
-<p>{{ welcome_msg }}</p>
+<p>{{ welcome_msg | markdown | safe | bleach }}</p>
 
 
+<h1>Recent Posts</h1>
 <div class="container-fluid">
     <div class="row">
     {% for row in posts %}
