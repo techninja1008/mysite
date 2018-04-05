@@ -6,14 +6,16 @@
 
 
 <div class="container-fluid">
-{% for row in posts %}
     <div class="row">
+    {% for row in posts %}
+    {% if row %}
     {% for post in row %}
-        <div class="col-sm-6">
+        <div class="col-sm-6" style="margin-bottom: 8px;">
             {% include 'blog/post_preview.html' %}
         </div>
     {% endfor %}
+    {% endif %}
+    {% endfor %}
     </div>
-{% endfor %}
 </div>
 {% endblock %}
