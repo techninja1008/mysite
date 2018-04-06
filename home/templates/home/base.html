@@ -32,9 +32,9 @@
         <ul class="navbar-nav justify-content-end">
             {% if can_post %}
 
-                <form class="form-inline my-2 my-lg-0" method="get" action="/search/">
+                <div class="form-inline my-2 my-lg-0">
                     <a class="btn btn-outline-primary my-2 my-sm-0" style="margin-left:4px;" href="{% url 'blog:post_new' %}">New Post</a>
-                </form>
+                </div>
             {% endif %}
 
             {% if request.user.username %}
