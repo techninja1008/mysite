@@ -15,6 +15,7 @@ class CustomView():
             'nav_links': [
                 {'text': "Home", 'href': reverse('home:index')},
                 {'text': "About", 'href': reverse('about:about')},
+                {'text': "Contact", 'href': reverse('contact:contact')},
                 {'text': "Links", 'href': reverse('about:links')},
                 {'text': "Blog", 'href': reverse('blog:post_list')}
             ],
