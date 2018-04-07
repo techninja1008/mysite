@@ -2,5 +2,5 @@
 
 {% block content %}
 <h1>Error. 404</h1>
-<p>{{ request.path }} is not found on this server. Do you want to go <a href={% url 'home:index' 'home' %}>back</a>?</p>
+<p>{{ request.path }} is not found on this server. Do you want to go <a href={% url 'home:index' %}>back</a>?</p>
 {% endblock %}
