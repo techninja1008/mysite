@@ -26,7 +26,7 @@ class CustomView():
 class IndexView(CustomView, generic.ListView):
     template_name = 'home/index.html'
     context_object_name = 'posts'
-
+    
     def get_more_context(self):
         return {
             'title': 'Home',
